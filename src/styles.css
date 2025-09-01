@@ -1,6 +1,6 @@
 * {
     box-sizing: border-box;
-    margin: o;
+    margin: 0;
     padding: 0;
 }
 
@@ -18,7 +18,7 @@ body {
 }
 
 header {
-    height: clamp(500px, 60vh, 800px);
+    height: 100vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -30,5 +30,8 @@ header {
 }
 
 img {
-    width: 50%;
+    /* width: 50vw; */
+    height: 60vh;
+    object-fit: scale-down;
+    flex-grow: 0;
 }

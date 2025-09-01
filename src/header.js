@@ -1,5 +1,5 @@
 import jisoo480w from "./images/jisoo1-480w.JPG";
-import jisoo898w from "./images/jisoo1-898w.JPG";
+import jisoo800w from "./images/jisoo1-898w.JPG";
 const header = document.querySelector("header");
 export default function headerInDOM() {
     const presentationContainer = document.createElement("div");
@@ -9,9 +9,9 @@ export default function headerInDOM() {
     const description = document.createElement("p");
     presentationContainer.className = "presentation-container";
     imgContainer.className = "image-container";
-    img.src = `${jisoo898w}`;
-    img.srcset = `${jisoo480w} 500w, ${jisoo898w} 800w`;
-    img.sizes = `(max-width: 600px) 480px, 1000px`;
+    img.src = jisoo480w;
+    img.srcset = `${jisoo480w} 480w, ${jisoo800w} 800w`;
+    img.sizes = "(width <= 600px) 480px, 800px";
     img.alt = "beautiful jisoo";
     img.className = "image-container";
     descriptionContainer.className = "description-container";
