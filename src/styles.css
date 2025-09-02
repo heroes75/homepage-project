@@ -2,11 +2,14 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    border: 1px solid red;
 }
 
 :root {
     --background-color: white;
     --color-text: black;
+    --box-shadow-color: black;
+    --box-shadow-spread: 11px
 }
 
 body {
@@ -23,15 +26,46 @@ header {
     justify-content: space-between;
     align-items: center;
     background-color: dodgerblue;
+    padding-top: 250px;
 }
 
 .presentation-container {
     display: flex;
+    
 }
 
-img {
-    /* width: 50vw; */
-    height: 60vh;
+.image-presentation {
+    height: 80vh;
     object-fit: scale-down;
     flex-grow: 0;
 }
+.image-container {
+}
+
+.description-container {
+    align-self: center;
+    background-color: var(--background-color);
+    color: var(--color-text);
+    padding: 40px;
+    box-shadow: 7px 2px var(--box-shadow-spread)  var(--box-shadow-color),
+    0 -8px var(--box-shadow-spread) var(--box-shadow-color)
+    ;
+    flex-shrink: 2;
+}
+
+.description {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+
+.h2-of-header  {
+    font-size: 40px;
+
+}
+
+.icon-of-header {
+    width: 32px;
+}
+
+
