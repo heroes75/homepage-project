@@ -15,7 +15,7 @@
 body {
     background-color: var(--background-color);
     color: var(--color-text);
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
@@ -27,6 +27,7 @@ header {
     align-items: center;
     background-color: dodgerblue;
     padding-top: 250px;
+    /* transform: skewX(5deg); */
 }
 
 .presentation-container {
@@ -38,8 +39,15 @@ header {
     height: 80vh;
     object-fit: scale-down;
     flex-grow: 0;
+    margin: 0;
+    padding: 0;
+    
 }
 .image-container {
+    box-shadow: 5px 0px 7px var(--box-shadow-color);
+    z-index: 2;
+    position: relative;
+    align-self: center;
 }
 
 .description-container {
@@ -51,11 +59,14 @@ header {
     0 -8px var(--box-shadow-spread) var(--box-shadow-color)
     ;
     flex-shrink: 2;
+    z-index: 1;
 }
 
 .description {
-    font-size: 32px;
+    font-size: 20px;
     font-weight: bold;
+    color: gray;
+    line-height: 1.25;
 }
 
 
@@ -65,7 +76,24 @@ header {
 }
 
 .icon-of-header {
-    width: 32px;
+    width: 42px;
+    margin: 11px;
+}
+
+.icon-container {
+    text-align: end;
+    padding: 30px;
+    
+}
+
+.name {
+    position: absolute;
+    top: 90%;
+    left: calc(50% - 42px * 2);
+    z-index: 2;
+    color: var(--color-text);
+    font-size: 42px;
+    font-weight: 800;
 }
 
 
