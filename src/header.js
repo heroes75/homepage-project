@@ -23,9 +23,9 @@ export default function headerInDOM() {
     const mobile = window.matchMedia("(max-width: 500px)");
     console.log(mobile.matches);
     const tablet = window.matchMedia(
-        "((max-width: 999px) and (min-width: 501px))",
+        "((max-width: 1200px) and (min-width: 501px))",
     );
-    const latop = window.matchMedia("(min-width: 1000px)");
+    const laptop = window.matchMedia("(min-width: 1201px)");
     presentationContainer.className = "presentation-container";
     imgContainer.className = "image-container";
     img.src = jisoo800w;
@@ -70,29 +70,36 @@ export default function headerInDOM() {
             iconContainer.style.cssText = "justify-self: center; padding: 15px";
         }
 
-        header.appendChild(presentationContainer);
         if (tablet.matches) {
             description.appendChild(imgContainer);
             description.appendChild(h2);
-            description.appendChild(p);
             h2.style.display = "flex";
-            description.style.cssText = "min-width: 400px; ";
+            description.style.cssText = "min-width: 300px; margin: 10px 0 0 0";
             imgContainer.style.cssText =
-                "float: left; margin: -120px 15px 0 -80px; padding: 0; shape-outside: margin-box";
+                "float: left; margin: -120px 15px 0 -80px; padding: 0; shape-outside: margin-box;";
             //descriptionContainer.style.cssText = "padding-top: -450px;"
-            presentationContainer.style.cssText = "padding: 45px 0 0 45px";
-            p.style.cssText = "line-height: 1.2";
+            presentationContainer.style.cssText =
+                "padding:  45px 0 0 0; margin: 50px 0 0 0";
+            p.style.cssText = "line-height: 1.2;";
             nameOfImage.style.cssText =
-                "top: 1%; left: 95%; text-align: center; display: inline-block; min-width: 50%";
+                "top: 1%; left: 95%; text-align: center; display: block; min-width: 65%; font-size: 30px";
+            img.style.cssText = "height: 45vh";
+            header.style.cssText = "padding: 190px 45px 0 75px";
         } else {
             presentationContainer.appendChild(imgContainer);
             descriptionContainer.appendChild(h2);
         }
+
+        if(laptop.matches) {
+
+        }
+        header.appendChild(presentationContainer);
         imgContainer.appendChild(img);
         imgContainer.appendChild(nameOfImage);
         presentationContainer.appendChild(descriptionContainer);
         descriptionContainer.appendChild(description);
         descriptionContainer.appendChild(iconContainer);
+        description.appendChild(p);
         iconContainer.appendChild(link1);
         link1.appendChild(icon1);
         iconContainer.appendChild(link2);
