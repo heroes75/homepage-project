@@ -23,9 +23,9 @@ export default function headerInDOM() {
     const mobile = window.matchMedia("(max-width: 500px)");
     console.log(mobile.matches);
     const tablet = window.matchMedia(
-        "((max-width: 1200px) and (min-width: 501px))",
+        "((max-width: 1100px) and (min-width: 501px))",
     );
-    const laptop = window.matchMedia("(min-width: 1201px)");
+    const laptop = window.matchMedia("(min-width: 1101px)");
     presentationContainer.className = "presentation-container";
     imgContainer.className = "image-container";
     img.src = jisoo800w;
@@ -65,15 +65,23 @@ export default function headerInDOM() {
     function resize() {
         if (mobile.matches) {
             presentationContainer.style.flexDirection = "column";
-            presentationContainer.style.paddingTop = "150px";
-            descriptionContainer.style.cssText = "padding: 20px";
+            presentationContainer.style.justifyContent = "center";
+            //presentationContainer.style.paddingTop = "150px";
+            descriptionContainer.style.cssText = "padding: 20px; ";
             iconContainer.style.cssText = "justify-self: center; padding: 15px";
+            description.style.cssText = "min-width: auto; margin: 0";
+            imgContainer.style.cssText = "float: none"
+            //iconContainer.style.cssText = "align-items: center; padding: 30px";
+            imgContainer.style.cssText = "float: none; margin:0; shape-outside: none"
+            p.style.cssText = "line-height: 1.5;";
+            nameOfImage.style.cssText = "top: 90%; left: calc(50% - 42px * 2); font-size: 25px"
+            img.style.cssText = "height: 67vh; object-fit: contain";
+            header.style.cssText = "padding-top: 100px; display: flex; justify-content: center"
         }
 
         if (tablet.matches) {
             description.appendChild(imgContainer);
             description.appendChild(h2);
-            h2.style.display = "flex";
             description.style.cssText = "min-width: 300px; margin: 10px 0 0 0";
             imgContainer.style.cssText =
                 "float: left; margin: -120px 15px 0 -80px; padding: 0; shape-outside: margin-box;";
@@ -82,7 +90,7 @@ export default function headerInDOM() {
                 "padding:  45px 0 0 0; margin: 50px 0 0 0";
             p.style.cssText = "line-height: 1.2;";
             nameOfImage.style.cssText =
-                "top: 1%; left: 95%; text-align: center; display: block; min-width: 65%; font-size: 30px";
+                "top: 1%; left: 95%; text-align: center; display: block; min-width: 158px; font-size: 30px";
             img.style.cssText = "height: 45vh";
             header.style.cssText = "padding: 190px 45px 0 75px";
         } else {
@@ -91,7 +99,15 @@ export default function headerInDOM() {
         }
 
         if(laptop.matches) {
-
+            header.style.cssText = "padding: 250px 21px 0 21px"
+            presentationContainer.style.cssText = "margin: 0; padding: 0; flex-direction: row";
+            description.style.cssText = "min-width: auto; margin: 0";
+            descriptionContainer.style.cssText = "padding: 40px; margin: 0";
+            iconContainer.style.cssText = "align-items: center; padding: 30px";
+            imgContainer.style.cssText = "float: none; margin:0; shape-outside: none"
+            p.style.cssText = "line-height: 1.5;";
+            nameOfImage.style.cssText = "top: 90%; left: calc(50% - 42px * 2); font-size: 42px"
+            img.style.cssText = "height: 80vh";
         }
         header.appendChild(presentationContainer);
         imgContainer.appendChild(img);
