@@ -3,6 +3,8 @@ import jisoo800w from "./images/jisoo1-898w.jpg";
 import twitter from "./images/icons/twitter-original.svg";
 import github from "./images/icons/github-original.svg";
 import linkedin from "./images/icons/linkedin-original.svg";
+import moon from "./images/icons/weather-night.svg"
+import sun from "./images/icons/white-balance-sunny.svg"
 const header = document.querySelector("header");
 export default function headerInDOM() {
     const presentationContainer = document.createElement("div");
@@ -20,7 +22,19 @@ export default function headerInDOM() {
     const icon1 = document.createElement("img");
     const icon2 = document.createElement("img");
     const icon3 = document.createElement("img");
+    const button = document.createElement("button")
+    const imagesOfButton = document.createElement("div")
+    const face = document.createElement("img")
+    const intermediateImage = document.createElement("div")
+    const intermediateImage2 = document.createElement("div")
+    const back = document.createElement("img")
+    //const backContainer= document.createElement("div")
     const mobile = window.matchMedia("(max-width: 500px)");
+    const root = document.querySelector(":root");
+    const preferredColor = window.matchMedia("(prefers-color-scheme: dark)");
+    const currentTheme = localStorage.getItem("theme");
+
+
     console.log(mobile.matches);
     const tablet = window.matchMedia(
         "((max-width: 1100px) and (min-width: 501px))",
@@ -62,6 +76,41 @@ export default function headerInDOM() {
     link1.className = "link-of-header";
     link2.className = "link-of-header";
     link3.className = "link-of-header";
+    button.classList.add("icon-of-header", "button-toggle")
+    face.className = "face"
+    back.className = "back"
+    imagesOfButton.className = "images-of-button"
+    face.alt = "sun"
+    back.alt = "moon"
+    console.log(face);
+    
+    intermediateImage.className = "intermediate-Image"
+    intermediateImage2.className = "intermediate-Image"
+
+    
+
+    if (currentTheme === "light") {
+    face.src = sun
+    back.src = moon
+      root.classList.toggle("light-theme");
+    } else if(currentTheme === "dark") {
+        root.classList.toggle("dark-theme");
+        face.src = moon
+    back.src = sun
+    }
+    button.addEventListener("click", () => {
+
+      if (preferredColor.matches) {
+
+        imagesOfButton.classList.toggle("is-flipped")
+        root.classList.toggle("light-theme");
+       var theme = root.classList.contains("light-theme") ? "light" : "dark";
+      } else {
+        root.classList.toggle("dark-theme");
+       var theme = root.classList.contains("dark-theme") ? "dark" : "light";
+      }
+      localStorage.setItem("theme", theme)
+    });
     function resize() {
         if (mobile.matches) {
             presentationContainer.style.flexDirection = "column";
@@ -122,6 +171,12 @@ export default function headerInDOM() {
         link2.appendChild(icon2);
         iconContainer.appendChild(link3);
         link3.appendChild(icon3);
+        iconContainer.appendChild(button);
+        button.appendChild(imagesOfButton)
+        imagesOfButton.appendChild(back)
+        imagesOfButton.appendChild(intermediateImage)
+        imagesOfButton.appendChild(face)
+        
     }
     window.addEventListener("resize", () => {
         resize();

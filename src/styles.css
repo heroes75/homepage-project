@@ -9,7 +9,15 @@
     --background-color: white;
     --color-text: black;
     --box-shadow-color: black;
-    --box-shadow-spread: 11px
+    --box-shadow-spread: 11px;
+    --color-github: #181616
+}
+
+:root.dark-theme {
+    --background-color: black;
+    --color-text: white;
+    --box-shadow-color: #888;
+    --color-github: white
 }
 
 body {
@@ -41,7 +49,6 @@ header {
     flex-grow: 0;
     margin: 0;
     padding: 0;
-    
 }
 .image-container {
     box-shadow: 5px 0px 7px var(--box-shadow-color);
@@ -96,4 +103,79 @@ header {
     font-weight: 800;
 }
 
+.images-of-button {
+    perspective: 499px;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    transform-origin: center;
+    display: flex;
+    justify-content: center;
+    transition: transform .4s ease-in-out;
+    transform-style: preserve-3d;
+    /* transform: rotateY(180deg); */
+}
 
+.face {
+    position: absolute;
+    height: 100%;
+    margin: 0%;
+    flex-shrink: 0;
+    transform: translateZ(.30px);
+}
+
+
+.back {
+    position: absolute;
+    height: 100%;
+    margin: 0%;
+    transform: translateZ(.10px) rotateY(180deg);
+    flex-shrink: 0;
+}
+
+.button-toggle {
+    height: 50px;
+    margin: 0%;
+    padding: 0;
+    
+}
+/* .button-toggle:hover .images-of-button {
+    transform: rotateY(180deg);
+} */
+
+.is-flipped {
+    transform: rotateY(180deg);
+}
+
+.intermediate-Image {
+    height: 50px;
+    width: 50px;
+    background-color: var(--background-color);
+    flex-shrink: 0;
+    transform: translateZ(.2px);
+}
+
+
+
+@media (prefers-color-scheme: dark) {
+    :root.light-theme {
+    --background-color: white;
+    --color-text: black;
+    --box-shadow-color: black;
+    --box-shadow-spread: 11px;
+    --color-github: #181616
+}
+
+:root {
+    --background-color: black;
+    --color-text: white;
+    --box-shadow-color: #888;
+    --color-github: white
+
+}
+
+}
+
+svg path {
+    fill: red;
+}
