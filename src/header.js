@@ -82,11 +82,11 @@ export default function headerInDOM() {
     imagesOfButton.className = "images-of-button"
     face.alt = "sun"
     back.alt = "moon"
-    console.log(face);
+    console.log(face.src);
     
     intermediateImage.className = "intermediate-Image"
     intermediateImage2.className = "intermediate-Image"
-
+    //icon1.style.fill = "red"
     
 
     if (currentTheme === "light") {
