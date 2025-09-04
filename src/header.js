@@ -3,8 +3,8 @@ import jisoo800w from "./images/jisoo1-898w.jpg";
 import twitter from "./images/icons/twitter-original.svg";
 import github from "./images/icons/github-original.svg";
 import linkedin from "./images/icons/linkedin-original.svg";
-import moon from "./images/icons/weather-night.svg"
-import sun from "./images/icons/white-balance-sunny.svg"
+import moon from "./images/icons/weather-night.svg";
+import sun from "./images/icons/white-balance-sunny.svg";
 const header = document.querySelector("header");
 export default function headerInDOM() {
     const presentationContainer = document.createElement("div");
@@ -22,18 +22,17 @@ export default function headerInDOM() {
     const icon1 = document.createElement("img");
     const icon2 = document.createElement("img");
     const icon3 = document.createElement("img");
-    const button = document.createElement("button")
-    const imagesOfButton = document.createElement("div")
-    const face = document.createElement("img")
-    const intermediateImage = document.createElement("div")
-    const intermediateImage2 = document.createElement("div")
-    const back = document.createElement("img")
+    const button = document.createElement("button");
+    const imagesOfButton = document.createElement("div");
+    const face = document.createElement("img");
+    const intermediateImage = document.createElement("div");
+    const intermediateImage2 = document.createElement("div");
+    const back = document.createElement("img");
     //const backContainer= document.createElement("div")
     const mobile = window.matchMedia("(max-width: 500px)");
     const root = document.querySelector(":root");
     const preferredColor = window.matchMedia("(prefers-color-scheme: dark)");
     const currentTheme = localStorage.getItem("theme");
-
 
     console.log(mobile.matches);
     const tablet = window.matchMedia(
@@ -76,40 +75,47 @@ export default function headerInDOM() {
     link1.className = "link-of-header";
     link2.className = "link-of-header";
     link3.className = "link-of-header";
-    button.classList.add("icon-of-header", "button-toggle")
-    face.className = "face"
-    back.className = "back"
-    imagesOfButton.className = "images-of-button"
-    face.alt = "sun"
-    back.alt = "moon"
-    console.log(face.src);
-    
-    intermediateImage.className = "intermediate-Image"
-    intermediateImage2.className = "intermediate-Image"
+    button.classList.add("icon-of-header", "button-toggle");
+    face.className = "face";
+    back.className = "back";
+    imagesOfButton.className = "images-of-button";
+    face.alt = "sun";
+    back.alt = "moon";
+
+    intermediateImage.className = "intermediate-Image";
+    intermediateImage2.className = "intermediate-Image";
     //icon1.style.fill = "red"
-    
-
-    if (currentTheme === "light") {
-    face.src = sun
-    back.src = moon
-      root.classList.toggle("light-theme");
-    } else if(currentTheme === "dark") {
-        root.classList.toggle("dark-theme");
-        face.src = moon
-    back.src = sun
+    if(preferredColor.matches) {
+        face.src = moon;
+        back.src = sun;
+    } else {
+        face.src = sun;
+        back.src = moon;
     }
-    button.addEventListener("click", () => {
-
-      if (preferredColor.matches) {
-
-        imagesOfButton.classList.toggle("is-flipped")
+    if (currentTheme === "light") {
+        face.src = sun;
+        back.src = moon;
         root.classList.toggle("light-theme");
-       var theme = root.classList.contains("light-theme") ? "light" : "dark";
-      } else {
+    } else if (currentTheme === "dark") {
         root.classList.toggle("dark-theme");
-       var theme = root.classList.contains("dark-theme") ? "dark" : "light";
-      }
-      localStorage.setItem("theme", theme)
+        face.src = moon;
+        back.src = sun;
+    }
+    console.log(face.src);
+    button.addEventListener("click", () => {
+        imagesOfButton.classList.toggle("is-flipped");
+        if (preferredColor.matches) {
+            root.classList.toggle("light-theme");
+            var theme = root.classList.contains("light-theme")
+                ? "light"
+                : "dark";
+        } else {
+            root.classList.toggle("dark-theme");
+            var theme = root.classList.contains("dark-theme")
+                ? "dark"
+                : "light";
+        }
+        localStorage.setItem("theme", theme);
     });
     function resize() {
         if (mobile.matches) {
@@ -119,13 +125,16 @@ export default function headerInDOM() {
             descriptionContainer.style.cssText = "padding: 20px; ";
             iconContainer.style.cssText = "justify-self: center; padding: 15px";
             description.style.cssText = "min-width: auto; margin: 0";
-            imgContainer.style.cssText = "float: none"
+            imgContainer.style.cssText = "float: none";
             //iconContainer.style.cssText = "align-items: center; padding: 30px";
-            imgContainer.style.cssText = "float: none; margin:0; shape-outside: none"
+            imgContainer.style.cssText =
+                "float: none; margin:0; shape-outside: none";
             p.style.cssText = "line-height: 1.5;";
-            nameOfImage.style.cssText = "top: 90%; left: calc(50% - 42px * 2); font-size: 25px"
+            nameOfImage.style.cssText =
+                "top: 90%; left: calc(50% - 42px * 2); font-size: 25px";
             img.style.cssText = "height: 67vh; object-fit: contain";
-            header.style.cssText = "padding-top: 100px; display: flex; justify-content: center"
+            header.style.cssText =
+                "padding-top: 100px; display: flex; justify-content: center";
         }
 
         if (tablet.matches) {
@@ -147,15 +156,18 @@ export default function headerInDOM() {
             descriptionContainer.appendChild(h2);
         }
 
-        if(laptop.matches) {
-            header.style.cssText = "padding: 250px 21px 0 21px"
-            presentationContainer.style.cssText = "margin: 0; padding: 0; flex-direction: row";
+        if (laptop.matches) {
+            header.style.cssText = "padding: 250px 21px 0 21px";
+            presentationContainer.style.cssText =
+                "margin: 0; padding: 0; flex-direction: row";
             description.style.cssText = "min-width: auto; margin: 0";
             descriptionContainer.style.cssText = "padding: 40px; margin: 0";
             iconContainer.style.cssText = "align-items: center; padding: 30px";
-            imgContainer.style.cssText = "float: none; margin:0; shape-outside: none"
+            imgContainer.style.cssText =
+                "float: none; margin:0; shape-outside: none";
             p.style.cssText = "line-height: 1.5;";
-            nameOfImage.style.cssText = "top: 90%; left: calc(50% - 42px * 2); font-size: 42px"
+            nameOfImage.style.cssText =
+                "top: 90%; left: calc(50% - 42px * 2); font-size: 42px";
             img.style.cssText = "height: 80vh";
         }
         header.appendChild(presentationContainer);
@@ -172,11 +184,10 @@ export default function headerInDOM() {
         iconContainer.appendChild(link3);
         link3.appendChild(icon3);
         iconContainer.appendChild(button);
-        button.appendChild(imagesOfButton)
-        imagesOfButton.appendChild(back)
-        imagesOfButton.appendChild(intermediateImage)
-        imagesOfButton.appendChild(face)
-        
+        button.appendChild(imagesOfButton);
+        imagesOfButton.appendChild(back);
+        imagesOfButton.appendChild(intermediateImage);
+        imagesOfButton.appendChild(face);
     }
     window.addEventListener("resize", () => {
         resize();
