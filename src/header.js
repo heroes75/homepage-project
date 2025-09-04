@@ -26,7 +26,6 @@ export default function headerInDOM() {
     const imagesOfButton = document.createElement("div");
     const face = document.createElement("img");
     const intermediateImage = document.createElement("div");
-    const intermediateImage2 = document.createElement("div");
     const back = document.createElement("img");
     //const backContainer= document.createElement("div")
     const mobile = window.matchMedia("(max-width: 500px)");
@@ -83,7 +82,6 @@ export default function headerInDOM() {
     back.alt = "moon";
 
     intermediateImage.className = "intermediate-Image";
-    intermediateImage2.className = "intermediate-Image";
     //icon1.style.fill = "red"
     if(preferredColor.matches) {
         face.src = moon;
