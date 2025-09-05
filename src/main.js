@@ -32,9 +32,9 @@ export default function main() {
         );
         box.style.cssText = `transform: rotateY(${angle * i}deg) translateZ(${apothem}px);`;
     }
-    main.appendChild(carousel);
     main.appendChild(buttonPrev);
     buttonPrev.appendChild(iconLeft);
+    main.appendChild(carousel);
     main.appendChild(buttonNext);
     buttonNext.appendChild(iconRight);
 }
