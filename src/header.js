@@ -33,7 +33,6 @@ export default function headerInDOM() {
     const preferredColor = window.matchMedia("(prefers-color-scheme: dark)");
     const currentTheme = localStorage.getItem("theme");
 
-    console.log(mobile.matches);
     const tablet = window.matchMedia(
         "((max-width: 1100px) and (min-width: 501px))",
     );
@@ -99,7 +98,6 @@ export default function headerInDOM() {
         face.src = moon;
         back.src = sun;
     }
-    console.log(face.src);
     button.addEventListener("click", () => {
         imagesOfButton.classList.toggle("is-flipped");
         if (preferredColor.matches) {
