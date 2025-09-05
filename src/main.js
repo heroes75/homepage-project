@@ -5,12 +5,17 @@ import triangleRight from "./images/icons/triangle-right.svg";
 export default function main() {
     const main = document.querySelector("main");
     const carousel = document.createElement("div");
+    const scene = document.createElement("div");
     const buttonPrev = document.createElement("button");
     const buttonNext = document.createElement("button");
     const iconLeft = document.createElement("img");
     const iconRight = document.createElement("img");
-    const angle = 360 / 6;
-    const apothem = 230 / (2 * Math.tan(Math.PI / 6));
+    const nbrOfElement = 6;
+    const angle = 360 / nbrOfElement;
+    const apothemHorizontal = 230 / (2 * Math.tan(Math.PI / nbrOfElement));
+    const apothemVertical = 390 / (2 * Math.tan(Math.PI / nbrOfElement));
+    const mobile = window.matchMedia("(max-width: 500px)");
+    const tapbletMinimun = window.matchMedia("(min-width: 501px)");
     buttonPrev.classList.add("btn-prev", "btn");
     buttonNext.classList.add("btn-next", "btn");
     iconLeft.src = triangleLeft;
@@ -20,8 +25,37 @@ export default function main() {
     iconLeft.className = "icon-nav";
     iconRight.className = "icon-nav";
     carousel.className = "carousel";
+    scene.className = "scene";
+    let deg = 0;
+    carousel.style.transform = `translateZ(${apothemHorizontal * -1}px) rotateY(${deg}deg)`;
+    buttonPrev.addEventListener("click", () => {
+        carousel.style.transform = `translateZ(${apothemHorizontal * -1}px) rotateY(${(deg = deg - angle)}deg)`;
+    });
+    buttonNext.addEventListener("click", () => {
+        carousel.style.transform = `translateZ(${apothemHorizontal * -1}px) rotateY(${(deg = deg + angle)}deg)`;
+    });
 
-    for (let i = 0; i < 6; i++) {
+    function resize() {
+        if (mobile.matches) {
+            main.style.cssText = "flex-direction: column"
+            carousel.style.transform = `translateZ(${apothemVertical * -1}px) rotateX(${deg}deg)`;
+            buttonPrev.addEventListener("click", () => {
+                carousel.style.transform = `translateZ(${apothemVertical * -1}px) rotateX(${(deg = deg - angle)}deg)`;
+            });
+            buttonNext.addEventListener("click", () => {
+                carousel.style.transform = `translateZ(${apothemVertical * -1}px) rotateX(${(deg = deg + angle)}deg)`;
+            });
+        } else {
+            carousel.style.transform = `translateZ(${apothemHorizontal * -1}px) rotateY(${deg}deg)`;
+            buttonPrev.addEventListener("click", () => {
+                carousel.style.transform = `translateZ(${apothemHorizontal * -1}px) rotateY(${(deg = deg - angle)}deg)`;
+            });
+            buttonNext.addEventListener("click", () => {
+                carousel.style.transform = `translateZ(${apothemHorizontal * -1}px) rotateY(${(deg = deg + angle)}deg)`;
+            });
+        }
+    }
+    for (let i = 0; i < nbrOfElement; i++) {
         const box = section(
             "#",
             "#",
@@ -30,11 +64,12 @@ export default function main() {
             carousel,
             `box${i}`,
         );
-        box.style.cssText = `transform: rotateY(${angle * i}deg) translateZ(${apothem}px);`;
+        box.style.cssText = `transform: rotateY(${angle * i}deg) translateZ(${apothemHorizontal}px);`;
     }
     main.appendChild(buttonPrev);
     buttonPrev.appendChild(iconLeft);
-    main.appendChild(carousel);
+    main.appendChild(scene);
+    scene.appendChild(carousel);
     main.appendChild(buttonNext);
     buttonNext.appendChild(iconRight);
 }
