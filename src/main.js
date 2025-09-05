@@ -2,6 +2,8 @@ import github from "./images/icons/github-original.svg";
 import externLink from "./images/icons/open-in-new.svg";
 import triangleLeft from "./images/icons/triangle-left.svg";
 import triangleRight from "./images/icons/triangle-right.svg";
+import triangleUp from "./images/icons/triangle-up.svg";
+import triangleDown from "./images/icons/triangle-down.svg";
 export default function main() {
     const main = document.querySelector("main");
     const carousel = document.createElement("div");
@@ -37,7 +39,9 @@ export default function main() {
 
     function resize() {
         if (mobile.matches) {
-            main.style.cssText = "flex-direction: column"
+            main.style.cssText = "flex-direction: column";
+            iconLeft.src = triangleUp;
+            iconRight.src = triangleDown;
             carousel.style.transform = `translateZ(${apothemVertical * -1}px) rotateX(${deg}deg)`;
             buttonPrev.addEventListener("click", () => {
                 carousel.style.transform = `translateZ(${apothemVertical * -1}px) rotateX(${(deg = deg - angle)}deg)`;
@@ -53,6 +57,8 @@ export default function main() {
             buttonNext.addEventListener("click", () => {
                 carousel.style.transform = `translateZ(${apothemHorizontal * -1}px) rotateY(${(deg = deg + angle)}deg)`;
             });
+            iconLeft.src = triangleLeft;
+            iconRight.src = triangleRight;
         }
     }
     for (let i = 0; i < nbrOfElement; i++) {
