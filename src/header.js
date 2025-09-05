@@ -28,11 +28,10 @@ export default function headerInDOM() {
     const intermediateImage = document.createElement("div");
     const back = document.createElement("img");
     //const backContainer= document.createElement("div")
-    const mobile = window.matchMedia("(max-width: 500px)");
     const root = document.querySelector(":root");
     const preferredColor = window.matchMedia("(prefers-color-scheme: dark)");
     const currentTheme = localStorage.getItem("theme");
-
+    const mobile = window.matchMedia("(max-width: 500px)");
     const tablet = window.matchMedia(
         "((max-width: 1100px) and (min-width: 501px))",
     );
