@@ -15,9 +15,10 @@ export default function main() {
     const nbrOfElement = 6;
     const angle = 360 / nbrOfElement;
     const apothemHorizontal = 230 / (2 * Math.tan(Math.PI / nbrOfElement));
-    const apothemVertical = 390 / (2 * Math.tan(Math.PI / nbrOfElement));
+    const apothemVertical = 490 / (2 * Math.tan(Math.PI / nbrOfElement));
     const mobile = window.matchMedia("(max-width: 500px)");
     const tapbletMinimun = window.matchMedia("(min-width: 501px)");
+    const projectArray = []
     buttonPrev.classList.add("btn-prev", "btn");
     buttonNext.classList.add("btn-next", "btn");
     iconLeft.src = triangleLeft;
@@ -30,33 +31,43 @@ export default function main() {
     scene.className = "scene";
     let deg = 0;
     carousel.style.transform = `translateZ(${apothemHorizontal * -1}px) rotateY(${deg}deg)`;
-    buttonPrev.addEventListener("click", () => {
-        carousel.style.transform = `translateZ(${apothemHorizontal * -1}px) rotateY(${(deg = deg - angle)}deg)`;
-    });
-    buttonNext.addEventListener("click", () => {
-        carousel.style.transform = `translateZ(${apothemHorizontal * -1}px) rotateY(${(deg = deg + angle)}deg)`;
-    });
+   
 
     function resize() {
         if (mobile.matches) {
-            main.style.cssText = "flex-direction: column";
             iconLeft.src = triangleUp;
             iconRight.src = triangleDown;
+            main.style.cssText = "flex-direction: column;"
+            scene.style.cssText = "align-self: center"
+            console.log(projectArray);
+            
+           projectArray.forEach((el, i) => {
+            el.style.cssText = `transform: rotateX(${angle * i}deg) translateZ(${apothemVertical}px);`;
+            
+           })
+
             carousel.style.transform = `translateZ(${apothemVertical * -1}px) rotateX(${deg}deg)`;
-            buttonPrev.addEventListener("click", () => {
+            buttonPrev.onclick =  () => {
                 carousel.style.transform = `translateZ(${apothemVertical * -1}px) rotateX(${(deg = deg - angle)}deg)`;
-            });
-            buttonNext.addEventListener("click", () => {
+            };
+            buttonNext.onclick = ()  => {
                 carousel.style.transform = `translateZ(${apothemVertical * -1}px) rotateX(${(deg = deg + angle)}deg)`;
-            });
+            };
         } else {
+            main.style.cssText = "flex-direction: row;"
+            scene.style.cssText = "align-self: stretched"
+
+            projectArray.forEach((el, i) => {
+            el.style.cssText = `transform: rotateY(${angle * i}deg) translateZ(${apothemHorizontal}px);`;
+           })
+
             carousel.style.transform = `translateZ(${apothemHorizontal * -1}px) rotateY(${deg}deg)`;
-            buttonPrev.addEventListener("click", () => {
+            buttonPrev.onclick = () => {
                 carousel.style.transform = `translateZ(${apothemHorizontal * -1}px) rotateY(${(deg = deg - angle)}deg)`;
-            });
-            buttonNext.addEventListener("click", () => {
+            };
+            buttonNext.onclick = () => {
                 carousel.style.transform = `translateZ(${apothemHorizontal * -1}px) rotateY(${(deg = deg + angle)}deg)`;
-            });
+            };
             iconLeft.src = triangleLeft;
             iconRight.src = triangleRight;
         }
@@ -68,10 +79,19 @@ export default function main() {
             `name${i + 1}`,
             "dcsddas",
             carousel,
-            `box${i}`,
+            `box${i + 1}`,
         );
-        box.style.cssText = `transform: rotateY(${angle * i}deg) translateZ(${apothemHorizontal}px);`;
+        //if (mobile.matches) {
+        //    box.style.cssText = `transform: rotateX(${angle * i}deg) translateZ(${apothemVertical}px);`;
+        //} else {
+       //     box.style.cssText = `transform: rotateY(${angle * i}deg) translateZ(${apothemHorizontal}px);`;
+        //}
+        projectArray.push(box)
     }
+    resize();
+    window.addEventListener("resize", () => {
+        resize()
+    })
     main.appendChild(buttonPrev);
     buttonPrev.appendChild(iconLeft);
     main.appendChild(scene);
