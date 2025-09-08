@@ -2,7 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 :root {
@@ -141,9 +141,7 @@ header {
     padding: 0;
     
 }
-/* .button-toggle:hover .images-of-button {
-    transform: rotateY(180deg);
-} */
+
 
 .is-flipped {
     transform: rotateY(180deg);
@@ -179,18 +177,11 @@ header {
 
 }
 
-.github g {
-    fill: red;
-}
-
 main {
     background-color: var(--background-color);
     display: flex;
-    /* min-height: 50vh; */
-    /* flex-wrap: wrap; */
     gap: 120px;
     justify-content: space-between;
-    /* align-items: center; */
 }
 
 
@@ -200,6 +191,8 @@ main {
     flex-direction: column;
     backface-visibility: hidden;
     position: absolute;
+    border: 1px dashed var(--color-text);
+    
 }
 
 .photo-of-project {
@@ -273,4 +266,81 @@ main {
  }
 .icon-nav {
     width: 32px;
+}
+
+footer {
+    display: flex;
+    padding: 30px;
+    flex-direction: row-reverse;
+    gap: 15px;
+    background-color: var(--background-color-header);
+}
+
+.CNT-ME {
+    font-size: 32px;
+    text-align: center;
+    margin: 25px ;
+}
+
+.address {
+    font-size: 20px;
+    margin: 15px 7px ;
+}
+
+.telephone-container, .email-container {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    margin: 17px 5px;
+}
+
+.email-icon, .telephone-icon {
+    width: 40px;
+    display: inline;
+}
+
+.telephone, .email {
+    display: inline;
+    font-size: 20px;
+
+}
+
+.catchphrase {
+    font-size: 25px;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 650px) {
+    footer {
+        flex-direction: column-reverse;
+        padding: 0;
+    }
+}
+
+.line {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: gold;
+  height: 5px;
+  animation-name: cursor;
+  animation-timeline: scroll();
+  transform-origin: left;
+  animation-timing-function: ease-in-out;
+  z-index: 3;
+}
+
+@keyframes cursor {
+  0% {
+    transform: scaleX(0.01);
+  }
+
+  100% {
+    transform: scaleX(1);
+  }
 }

@@ -140,7 +140,7 @@ export default function headerInDOM() {
                 "float: left; margin: -120px 15px 0 -80px; padding: 0; shape-outside: margin-box;";
             //descriptionContainer.style.cssText = "padding-top: -450px;"
             presentationContainer.style.cssText =
-                "padding:  45px 0 0 0; margin: 50px 0 0 0";
+                "padding:  15px 0 0 0; margin: 20px 0 0 0";
             p.style.cssText = "line-height: 1.2;";
             nameOfImage.style.cssText =
                 "top: 1%; left: 95%; text-align: center; display: block; min-width: 158px; font-size: 30px";
@@ -152,7 +152,7 @@ export default function headerInDOM() {
         }
 
         if (laptop.matches) {
-            header.style.cssText = "padding: 250px 21px 0 21px";
+            header.style.cssText = "padding: 50px 21px 0 21px";
             presentationContainer.style.cssText =
                 "margin: 0; padding: 0; flex-direction: row";
             description.style.cssText = "min-width: auto; margin: 0";
