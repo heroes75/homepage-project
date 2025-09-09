@@ -248,6 +248,7 @@ main {
 .btn {
     padding: 10px;
     background-color: var(--background-color);
+    border: 0;
 }
 
 .btn:hover {
