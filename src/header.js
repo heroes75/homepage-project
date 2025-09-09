@@ -1,4 +1,3 @@
-import jisoo480w from "./images/jisoo1-480w.jpg";
 import jisoo800w from "./images/jisoo1-898w.jpg";
 import twitter from "./images/icons/twitter-original.svg";
 import github from "./images/icons/github-original.svg";
@@ -7,6 +6,7 @@ import moon from "./images/icons/weather-night.svg";
 import sun from "./images/icons/white-balance-sunny.svg";
 const header = document.querySelector("header");
 export default function headerInDOM() {
+    const headerBg = document.createElement("div")
     const presentationContainer = document.createElement("div");
     const imgContainer = document.createElement("div");
     const img = document.createElement("img");
@@ -27,7 +27,6 @@ export default function headerInDOM() {
     const face = document.createElement("img");
     const intermediateImage = document.createElement("div");
     const back = document.createElement("img");
-    //const backContainer= document.createElement("div")
     const root = document.querySelector(":root");
     const preferredColor = window.matchMedia("(prefers-color-scheme: dark)");
     const currentTheme = localStorage.getItem("theme");
@@ -36,6 +35,7 @@ export default function headerInDOM() {
         "((max-width: 1100px) and (min-width: 501px))",
     );
     const laptop = window.matchMedia("(min-width: 1101px)");
+    headerBg.className = "header__bg"
     presentationContainer.className = "presentation-container";
     imgContainer.className = "image-container";
     img.src = jisoo800w;
@@ -80,7 +80,6 @@ export default function headerInDOM() {
     back.alt = "moon";
 
     intermediateImage.className = "intermediate-Image";
-    //icon1.style.fill = "red"
     if(preferredColor.matches) {
         face.src = moon;
         back.src = sun;
@@ -116,12 +115,10 @@ export default function headerInDOM() {
         if (mobile.matches) {
             presentationContainer.style.flexDirection = "column";
             presentationContainer.style.justifyContent = "center";
-            //presentationContainer.style.paddingTop = "150px";
             descriptionContainer.style.cssText = "padding: 20px; ";
             iconContainer.style.cssText = "justify-self: center; padding: 15px";
             description.style.cssText = "min-width: auto; margin: 0";
             imgContainer.style.cssText = "float: none";
-            //iconContainer.style.cssText = "align-items: center; padding: 30px";
             imgContainer.style.cssText =
                 "float: none; margin:0; shape-outside: none";
             p.style.cssText = "line-height: 1.5;";
@@ -138,7 +135,6 @@ export default function headerInDOM() {
             description.style.cssText = "min-width: 300px; margin: 10px 0 0 0";
             imgContainer.style.cssText =
                 "float: left; margin: -120px 15px 0 -80px; padding: 0; shape-outside: margin-box;";
-            //descriptionContainer.style.cssText = "padding-top: -450px;"
             presentationContainer.style.cssText =
                 "padding:  15px 0 0 0; margin: 20px 0 0 0";
             p.style.cssText = "line-height: 1.2;";
@@ -165,6 +161,7 @@ export default function headerInDOM() {
                 "top: 90%; left: calc(50% - 42px * 2); font-size: 42px";
             img.style.cssText = "height: 80vh";
         }
+        header.appendChild(headerBg);
         header.appendChild(presentationContainer);
         imgContainer.appendChild(img);
         imgContainer.appendChild(nameOfImage);

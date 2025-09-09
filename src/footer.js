@@ -3,7 +3,7 @@ import phone from "./images/icons/cellphone.svg";
 
 export default function footer() {
     const footer = document.querySelector("footer");
-    const img = document.querySelector("footer img");
+    //const img = document.querySelector("footer img");
     const details = document.createElement("div")
     const h3 = document.createElement("h3")
     const catchphrase = document.createElement("div")

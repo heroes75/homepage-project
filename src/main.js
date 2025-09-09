@@ -17,7 +17,6 @@ export default function main() {
     const apothemHorizontal = 230 / (2 * Math.tan(Math.PI / nbrOfElement));
     const apothemVertical = 490 / (2 * Math.tan(Math.PI / nbrOfElement));
     const mobile = window.matchMedia("(max-width: 500px)");
-    const tapbletMinimun = window.matchMedia("(min-width: 501px)");
     const projectArray = []
     buttonPrev.classList.add("btn-prev", "btn");
     buttonNext.classList.add("btn-next", "btn");
@@ -76,16 +75,11 @@ export default function main() {
         const box = section(
             "#",
             "#",
-            `name${i + 1}`,
-            "dcsddas",
+            `name ${i + 1}`,
+            "description of project " + +(i + 1),
             carousel,
             `box${i + 1}`,
         );
-        //if (mobile.matches) {
-        //    box.style.cssText = `transform: rotateX(${angle * i}deg) translateZ(${apothemVertical}px);`;
-        //} else {
-       //     box.style.cssText = `transform: rotateY(${angle * i}deg) translateZ(${apothemHorizontal}px);`;
-        //}
         projectArray.push(box)
     }
     resize();
